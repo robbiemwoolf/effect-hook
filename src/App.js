@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [toDos, setToDos] = useState([]);
 
-  // Load data from https://jsonplaceholder.typicode.com/todos?userId=2
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos?userId=2")
+      .then((response) => response.json())
+      .then(setToDos);
+  }, []);
 
   return (
     <div className="App">
